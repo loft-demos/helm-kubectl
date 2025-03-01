@@ -1,8 +1,6 @@
 # vcluster-bash-app GHCR image
 
 [![ci](https://github.com/loft-demos/helm-kubectl/actions/workflows/image-build-push.yaml/badge.svg)](https://github.com/loft-demos/helm-kubectl/actions/workflows/image-build-push.yaml)
-[![Docker Stars](https://img.shields.io/docker/stars/dtzar/helm-kubectl.svg?style=flat)](https://hub.docker.com/r/dtzar/helm-kubectl/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/dtzar/helm-kubectl.svg?style=flat)](https://hub.docker.com/r/dtzar/helm-kubectl/)
 
 Supported tags and release links
 
