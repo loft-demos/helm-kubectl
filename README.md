@@ -1,6 +1,6 @@
-# helm-kubernetes Docker hub image
+# vcluster-bash-app GHCR image
 
-[![ci](https://github.com/dtzar/helm-kubectl/actions/workflows/image-build-push.yaml/badge.svg)](https://github.com/dtzar/helm-kubectl/actions/workflows/image-build-push.yaml)
+[![ci](https://github.com/loft-demos/helm-kubectl/actions/workflows/image-build-push.yaml/badge.svg)](https://github.com/loft-demos/helm-kubectl/actions/workflows/image-build-push.yaml)
 [![Docker Stars](https://img.shields.io/docker/stars/dtzar/helm-kubectl.svg?style=flat)](https://hub.docker.com/r/dtzar/helm-kubectl/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/dtzar/helm-kubectl.svg?style=flat)](https://hub.docker.com/r/dtzar/helm-kubectl/)
 
@@ -17,11 +17,11 @@ The image tags below are dynamic and overwritten with the latest helm image unde
 * 3.<minor#> - helm v3.<minor#>.x, kubectl v1.x, alpine 3.x.  Example: 3.15
 * 3 - helm 3.x, kubectl 1.x, alpine 3.x
 
-Releases from Helm 2.3.1 to 3.15.4 and the above dynamic tags can be found [on Docker Hub tags page](https://hub.docker.com/r/dtzar/helm-kubectl/tags).
+Releases from Helm 2.3.1 to 3.15.4 and the above dynamic tags can be found
 
 ## Overview
 
-This lightweight alpine docker image provides kubectl and helm binaries for working with a Kubernetes cluster. A local configured kubectl is a prerequisite to use helm per [helm documentation](https://github.com/kubernetes/helm/blob/master/docs/quickstart.md). This image is useful for general helm administration such as deploying helm charts and managing releases. It is also perfect for any automated deployment pipeline needing to use helm which supports docker images such as [Concourse CI](https://concourse.ci), [Jenkins on Kubernetes](https://kubeapps.com/charts/stable/jenkins), [Travis CI](https://docs.travis-ci.com/user/docker/), and [Circle CI](https://circleci.com/integrations/docker/). Having bash installed allows for better support for troubleshooting by being able to exec / terminal in and run desired shell scripts. Git installed allows installation of [helm plugins](https://github.com/kubernetes/helm/blob/master/docs/plugins.md).
+This lightweight alpine docker image provides the kubectl and helm binaries for working with a Kubernetes cluster. A local configured kubectl is a prerequisite to use helm per [helm documentation](https://github.com/kubernetes/helm/blob/master/docs/quickstart.md). This image is useful for general helm administration such as deploying helm charts and managing releases. It is also perfect for any automated deployment pipeline needing to use helm which supports docker images such as [Concourse CI](https://concourse.ci), [Jenkins on Kubernetes](https://kubeapps.com/charts/stable/jenkins), [Travis CI](https://docs.travis-ci.com/user/docker/), and [Circle CI](https://circleci.com/integrations/docker/). Having bash installed allows for better support for troubleshooting by being able to exec / terminal in and run desired shell scripts. Git installed allows installation of [helm plugins](https://github.com/kubernetes/helm/blob/master/docs/plugins.md).
 
 If it is desired to only use kubectl and have kubectl as the entry command (versus this image as bash entry command), I recommend checking out this image instead:
 [lachlanevenson/kubectl](https://hub.docker.com/r/lachlanevenson/k8s-kubectl/)
@@ -29,11 +29,11 @@ If it is desired to only use kubectl and have kubectl as the entry command (vers
 ## Run
 
 Example to just run helm on entry:  
-`docker run --rm dtzar/helm-kubectl helm`  
+`docker run --rm ghcr.io/loft-demos/vcluster-bash-app helm`  
 By default kubectl will try to use /root/.kube/config file for connection to the kubernetes cluster, but does not exist by default in the image.
 
 Example for use with personal administration or troubleshooting with volume mount for kubeconfig files:  
-`docker run -it -v ~/.kube:/root/.kube dtzar/helm-kubectl`  
+`docker run -it -v ~/.kube:/root/.kube ghcr.io/loft-demos/vcluster-bash-app`  
 The -v maps your host docker machine Kubernetes configuration directory (~/.kube) to the container's Kubernetes configuration directory (root/.kube).
 
 ## Build
